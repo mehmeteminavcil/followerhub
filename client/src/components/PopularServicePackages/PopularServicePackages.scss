@@ -1,59 +1,204 @@
-.PopularServicePackages{
-    padding: 40px;
-    background: #eef0f7;
+.PopularServicePackages {
+  padding: 40px;
+  background: #eef0f7;
 
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1300px;
+    .top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
 
-    .wrapper{
-        .top{
-            display: flex;
-            justify-content: space-between;
-
-            .left{
-                display: flex;
-                align-items: center;
-                .icon{
-                    background-color: orangered;
-                    color: #fff;
-                    padding: 16px;
-                    border-radius: 8px;
-                    margin-right: 16px;
-                    font-size: 20px;
-                }
-                h1{
-                    font-size: 24px;
-                    color: #23232d;
-                    font-weight: normal;
-                }
-            }
-
-            .right{
-                background-color: #fff;
-                display: flex;
-                align-items: center;
-
-                gap: 10px;
-                padding: 14px;
-                border-radius: 8px;
-
-                span{
-                    font-size: 14px;
-                    margin-right: 10px;
-                }
-
-                .item{
-                    display: flex;
-                    align-items: center;justify-content: center;
-                    background:#edf0f5;
-                    padding: 10px;
-                    font-size: 18px;
-                    border-radius: 5px;
-                    cursor: pointer;
-                }
-                .item.active{
-                    background:#e1306c ;
-                    color: #fff;
-                }
-            }
+      .left {
+        display: flex;
+        align-items: center;
+        .icon {
+          background-color: orangered;
+          color: #fff;
+          padding: 16px;
+          border-radius: 8px;
+          margin-right: 16px;
+          font-size: 50px;
         }
+        h1 {
+          font-size: 24px;
+          color: #23232d;
+          font-weight: normal;
+        }
+      }
+
+      .right {
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        gap: 16px;
+        padding: 14px;
+        border-radius: 8px;
+
+        span {
+          font-size: 14px;
+          margin-right: 10px;
+        }
+
+        .item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #edf0f5;
+          padding: 10px;
+          font-size: 18px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .item.active {
+          background: #e1306c;
+          color: #fff;
+        }
+      }
     }
+
+    .center {
+      margin-top: 40px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 14px;
+      justify-content: center;
+
+      .featuredCard {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+
+        ul {
+          list-style: none;
+
+          .title {
+            font-weight: 600;
+            background: #e1306c;
+            color: #fff;
+          }
+
+          .first {
+            font-weight: 500;
+            padding: 10;
+          }
+
+          li {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #cfcfcf;
+            padding: 14px 20px;
+
+            .first {
+              color: #e1306c;
+              font-size: 20px;
+            }
+            .icon {
+              color: #e1306c;
+              background-color: #e1306b42;
+              font-size: 14px;
+              border-radius: 50%;
+              padding: 2px;
+            }
+            p {
+              margin-left: 10px;
+              font-weight: lighter;
+            }
+          }
+        }
+        .price {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          padding: 20px 10px;
+
+          p {
+            font-weight: 600;
+            font-size: 28px;
+          }
+          button {
+            background-color: #2acf8f;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .bottom {
+        margin-top: 40px;
+      padding: 30px;
+
+      .bottomWrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        justify-content: center;
+
+        .card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          border-radius: 10px;
+          padding: 30px;
+        
+
+          span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2acf8f;
+            border-radius: 8px;
+            width: 60px;
+            height: 60px;
+            color: #fff;
+            font-size: 30px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: hsla(157, 66%, 49%, 0.742) 0px 2px 10px 1px;
+            transition: all .3s ease-in-out;
+
+            &:hover {
+                border-radius: 50%;
+            }
+          }
+
+          h5 {
+            color: #333;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+          }
+
+          p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.5;
+          }
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        .bottomWrapper {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+      }
+
+      @media only screen and (max-width: 479px) {
+        .bottomWrapper {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+      }
+    }
+  }
 }

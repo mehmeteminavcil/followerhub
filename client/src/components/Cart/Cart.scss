@@ -1,0 +1,89 @@
+.cartPopup {
+  margin-top: 10px;
+  position: absolute;
+  right: 40px;
+  background: #ffffffb8;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  padding: 16px;
+  box-shadow: rgba(0, 0, 0, 0.301) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.416) 0px 2px 4px -1px;
+  z-index: 999;
+  transition: all 0.4s ease;
+
+  h1 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .item {
+    border-bottom: 2px solid #2acf8f;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin: 14px 0;
+
+    .icon {
+      margin-right: 10px;
+    }
+
+    .title {
+      font-size: 16px;
+      font-weight: 400;
+      margin-right: 10px;
+    }
+    .price {
+      margin-right: 20px;
+    }
+
+    .delete {
+      color: #e1306c;
+      cursor: pointer;
+      margin-left: auto;
+    }
+  }
+
+  .total {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+
+  button {
+    margin: 20px 0;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #2acf8f;
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    &:active {
+      transform: scale(0.9);
+    }
+
+    .wallet {
+      font-size: 30px;
+    }
+  }
+
+  .reset {
+    color: red;
+    background-color: #ff000074;
+    width: fit-content;
+    font-size: 12px;
+    border-radius: 2px;
+    padding: 2px;
+    cursor: pointer;
+  }
+}

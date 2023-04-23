@@ -1,7 +1,10 @@
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { useState } from "react";
+import Cart from "../Cart/Cart";
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -23,12 +26,13 @@ const Navbar = () => {
           <div className="item">
             <Link className="link">Kurumsal</Link>
           </div>
-          <div className="cart">
+          <div className="cart" onClick={() => setOpen(!open)}>
             <ShoppingCartOutlinedIcon className="cartIcon" />
             <span>2</span>
           </div>
         </div>
       </div>
+      {open && <Cart />}
     </div>
   );
 };

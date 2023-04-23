@@ -4,6 +4,7 @@ import Product from "./pages/Product/Product";
 import Products from "./pages/Products/Products";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+import Instagram from "./pages/Instagram/Instagram";
 
 const Layout = () => {
   return (
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Home /> },
+      { path: "/instagram", element: <Instagram /> },
       { path: "/products/:id", element: <Product /> },
       { path: "/product/:id", element: <Products /> },
     ],
