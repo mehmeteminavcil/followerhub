@@ -4,7 +4,7 @@ import Product from "./pages/Product/Product";
 import Products from "./pages/Products/Products";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import Instagram from "./pages/Instagram/Instagram";
+import SingleLinks from "./pages/SingleLinks/SingleLinks";
 import SingleCarts from "./pages/SingleCarts/SingleCarts";
 
 const Layout = () => {
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/:id", element: <Instagram /> },
+      { path: "/:id", element: <SingleLinks /> },
       { path: "/:id/:id", element: <SingleCarts /> },
       { path: "/products/:id", element: <Product /> },
       { path: "/product/:id", element: <Products /> },

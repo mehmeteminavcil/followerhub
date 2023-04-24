@@ -1,4 +1,4 @@
-import "./Instagram.scss";
+import "./SingleLinks.scss";
 import SubCategory from "../../components/SubCategory/SubCategory";
 import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";

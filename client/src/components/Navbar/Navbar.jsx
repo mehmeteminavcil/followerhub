@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useState } from "react";
 import Cart from "../Cart/Cart";
+import { useSelector } from "react-redux";
 const Navbar = () => {
+  const products = useSelector((state) => state.cart.products);
+
   const [open, setOpen] = useState(false);
   return (
     <div className="navbar">
@@ -30,7 +33,7 @@ const Navbar = () => {
           </div>
           <div className="cart" onClick={() => setOpen(!open)}>
             <ShoppingCartOutlinedIcon className="cartIcon" />
-            <span>2</span>
+            <span>{products.length}</span>
           </div>
         </div>
       </div>

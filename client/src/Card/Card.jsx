@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Card.scss";
 import { BsPersonAdd, BsCheck2 } from "react-icons/bs";
 import { GoEyeClosed } from "react-icons/go";
-const Card = ({ card }) => {
+const Card = ({ card, handleAddCart }) => {
   const [showForm, setShowForm] = useState(false);
   const [profilePicture, setProfilePicture] = useState("/img/user.png");
   const [username, setUserName] = useState("");
@@ -38,7 +38,7 @@ const Card = ({ card }) => {
           </li>
         </ul>
         <div className="price">
-          <p>19.90$</p>
+          <p>${card.attributes.price}</p>
           <button onClick={() => setShowForm(!showForm)}>Add to Cart</button>
         </div>
         {showForm && (
@@ -58,7 +58,9 @@ const Card = ({ card }) => {
                 />
               </div>
 
-              <button type="button">Add to Cart</button>
+              <button type="button" onClick={handleAddCart}>
+                Approve to Cart
+              </button>
             </form>
           </div>
         )}

@@ -2,39 +2,50 @@ import "./Cart.scss";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BsInstagram, BsSpotify, BsTiktok, BsTwitter } from "react-icons/bs";
 import { CiWallet } from "react-icons/ci";
+import { useDispatch, useSelector } from "react-redux";
+import { removeItem, resetCart } from "../../redux/cartReducer";
 
 const Cart = () => {
+  const products = useSelector((state) => state.cart.products);
+
+  const dispatch = useDispatch();
+
+  const totalPrice = () => {
+    let total = 0;
+    products.forEach((item) => (total += item.price));
+    return total.toFixed(2);
+  };
+
   return (
     <div className="cartPopup">
       <h1>Products in your cart</h1>
-      <div className="item">
-        <BsInstagram className="icon" />
 
-        <h2 className="title">1.000 Dusmeyen Follower</h2>
-        <div className="price">
-          1 <b>x</b> $19.90
-        </div>
-        <RiDeleteBinLine className="delete" />
-      </div>
-      <div className="item">
-        <BsInstagram className="icon" />
+      {products?.map((item) => (
+        <div className="item" key={item.id}>
+          <BsInstagram className="icon" />
 
-        <h2 className="title">1.000 Follower</h2>
-        <div className="price">
-          1 <b>x</b> $19.90
+          <h2 className="title">{item.id}</h2>
+          <div className="price">
+            1 <b>x</b> {item.price}
+          </div>
+          <RiDeleteBinLine
+            className="delete"
+            onClick={() => dispatch(removeItem(item.id))}
+          />
         </div>
-        <RiDeleteBinLine className="delete" />
-      </div>
+      ))}
 
       <div className="total">
         <span>SUBTOTAL</span>
-        <span>$123.20</span>
+        <span>${totalPrice()}</span>
       </div>
       <button>
         <CiWallet className="wallet" />
         PROCEED TO CHECKOUT
       </button>
-      <p className="reset">Reset Cart</p>
+      <p className="reset" onClick={() => dispatch(resetCart())}>
+        Reset Cart
+      </p>
     </div>
   );
 };
