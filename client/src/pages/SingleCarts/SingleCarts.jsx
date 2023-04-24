@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 
 const SingleCarts = () => {
   const param = useParams();
+  console.log(param);
 
   const dispatch = useDispatch();
 

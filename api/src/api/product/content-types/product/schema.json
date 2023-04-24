@@ -18,17 +18,6 @@
     "desc": {
       "type": "text"
     },
-    "img": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "price": {
       "type": "decimal"
     },
@@ -50,7 +39,14 @@
         "normal",
         "featured",
         "trending"
-      ]
+      ],
+      "default": "normal"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
     }
   }
 }

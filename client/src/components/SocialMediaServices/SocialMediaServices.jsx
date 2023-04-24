@@ -11,7 +11,7 @@ const SocialMediaServices = () => {
         </div>
         <div className="bottom">
           <div className="bottomWrapper">
-            <Link to="/instagram" className="link instagram">
+            <Link to="/instagram" className="link">
               <BsInstagram className="icon " />
               <h5>Instagram</h5>
               <p>Services</p>

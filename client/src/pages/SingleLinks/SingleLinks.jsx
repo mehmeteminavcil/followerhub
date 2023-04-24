@@ -3,7 +3,7 @@ import SubCategory from "../../components/SubCategory/SubCategory";
 import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 
-const Instagram = () => {
+const SingleLinks = () => {
   const param = useParams().id;
 
   const { data, loading, error } = useFetch(
@@ -12,7 +12,7 @@ const Instagram = () => {
 
   console.log();
   return (
-    <div className="instagram">
+    <div className="singleLinks">
       <div className="subContainer">
         {data?.map((item) => (
           <SubCategory key={item.id} item={item} />
@@ -22,4 +22,4 @@ const Instagram = () => {
   );
 };
 
-export default Instagram;
+export default SingleLinks;

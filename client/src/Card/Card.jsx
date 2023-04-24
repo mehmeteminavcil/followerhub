@@ -9,12 +9,19 @@ const Card = ({ card, handleAddCart }) => {
 
   console.log(username);
   return (
-    <div className="center">
+    <div className="cardContainer">
       <div className="featuredCard">
         <ul>
-          <li className="title">
-            {card.attributes.title}
-            <br /> PACKAGES
+          <li className="title" style={{ background: card.attributes.color }}>
+            <h3>
+              {card?.attributes.title}
+              <br /> PACKAGES
+            </h3>
+
+            <i
+              className={card.attributes.icon + " logo"}
+              style={{ background: card.attributes.color }}
+            ></i>
           </li>
           <li className="first">
             <BsPersonAdd className="first" />
