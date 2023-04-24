@@ -2,26 +2,18 @@ import { useState } from "react";
 import "./Card.scss";
 import { BsPersonAdd, BsCheck2 } from "react-icons/bs";
 import { GoEyeClosed } from "react-icons/go";
-import axios from "axios";
-const Card = () => {
+const Card = ({ card }) => {
   const [showForm, setShowForm] = useState(false);
   const [profilePicture, setProfilePicture] = useState("/img/user.png");
   const [username, setUserName] = useState("");
 
-  const getAccount = (username) => {
-    axios
-      .get("https://www.instagram.com/therock/")
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
-  };
   console.log(username);
   return (
     <div className="center">
       <div className="featuredCard">
         <ul>
           <li className="title">
-            INSTAGRAM
+            {card.attributes.title}
             <br /> PACKAGES
           </li>
           <li className="first">
@@ -66,9 +58,7 @@ const Card = () => {
                 />
               </div>
 
-              <button type="button" onClick={getAccount}>
-                Add to Cart
-              </button>
+              <button type="button">Add to Cart</button>
             </form>
           </div>
         )}

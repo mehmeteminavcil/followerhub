@@ -11,22 +11,22 @@ const SocialMediaServices = () => {
         </div>
         <div className="bottom">
           <div className="bottomWrapper">
-            <Link className="link instagram">
+            <Link to="/instagram" className="link instagram">
               <BsInstagram className="icon " />
               <h5>Instagram</h5>
               <p>Services</p>
             </Link>
-            <Link className="link spotify">
+            <Link to="/spotify" className="link spotify">
               <BsSpotify className="icon " />
               <h5>Spotify</h5>
               <p>Services</p>
             </Link>
-            <Link className="link tiktok">
+            <Link to="/tiktok" className="link tiktok">
               <BsTiktok className="icon " />
               <h5>Tiktok</h5>
               <p>Services</p>
             </Link>
-            <Link className="link twitter">
+            <Link to="/twitter" className="link twitter">
               <BsTwitter className="icon " />
               <h5>Twitter</h5>
               <p>Services</p>

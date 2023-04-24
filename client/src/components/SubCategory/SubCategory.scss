@@ -1,0 +1,19 @@
+.subCategory{
+    text-decoration: none;
+    background: #ff000034;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    gap: 10px;
+    min-width: 300px;
+    width: calc(50% - 10px);
+    margin: 5px;
+    flex-grow: 1;
+    color: #000;
+    
+
+}

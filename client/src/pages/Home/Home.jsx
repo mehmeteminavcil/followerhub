@@ -5,7 +5,6 @@ import PopularServicePackages from "../../components/PopularServicePackages/Popu
 const Home = () => {
   return (
     <div className="home">
-      Home
       <SocialMediaServices />
       <PopularServicePackages />
     </div>
