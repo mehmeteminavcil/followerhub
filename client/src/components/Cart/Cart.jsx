@@ -10,9 +10,11 @@ const Cart = () => {
 
   const dispatch = useDispatch();
 
+  console.log(products);
+
   const totalPrice = () => {
     let total = 0;
-    products.forEach((item) => (total += item.price));
+    products.forEach((item) => (total += item.quantity * item.price));
     return total.toFixed(2);
   };
 
@@ -22,11 +24,11 @@ const Cart = () => {
 
       {products?.map((item) => (
         <div className="item" key={item.id}>
-          <BsInstagram className="icon" />
+          <i className={item.icon + " icon"}></i>
 
-          <h2 className="title">{item.id}</h2>
+          <h2 className="title">{item.desc_1}</h2>
           <div className="price">
-            1 <b>x</b> {item.price}
+            {item.quantity} <b>x</b> {item.price}
           </div>
           <RiDeleteBinLine
             className="delete"

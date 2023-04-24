@@ -15,8 +15,8 @@
     "title": {
       "type": "string"
     },
-    "desc": {
-      "type": "text"
+    "desc_1": {
+      "type": "string"
     },
     "price": {
       "type": "decimal"
@@ -47,6 +47,22 @@
     },
     "color": {
       "type": "string"
+    },
+    "desc_2": {
+      "type": "string",
+      "default": "%100 Dusme Garantili"
+    },
+    "desc_3": {
+      "type": "string"
+    },
+    "desc_4": {
+      "type": "string"
+    },
+    "desc_5": {
+      "type": "string"
+    },
+    "p_id": {
+      "type": "uid"
     }
   }
 }

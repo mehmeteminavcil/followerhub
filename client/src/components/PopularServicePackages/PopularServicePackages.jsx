@@ -1,3 +1,6 @@
+import { useDispatch } from "react-redux";
+import useFetch from "../../hooks/useFetch";
+import DiscountCard from "../DiscountCard/DiscountCard";
 import "./PopularServicePackages.scss";
 import {
   BsFillBasket2Fill,
@@ -9,19 +12,24 @@ import {
   BsPersonAdd,
   BsCheck2,
 } from "react-icons/bs";
+import { addToCart, resetCart } from "../../redux/cartReducer";
 
 const PopularServicePackages = () => {
+  const { data, loading, error } = useFetch(
+    `/products?filters[type][$eq]=trending`
+  );
+  const dispathc = useDispatch();
   return (
     <div className="PopularServicePackages">
       <div className="wrapper">
         <div className="top">
-          <div className="left">
+          <div className="left" onClick={() => dispathc(resetCart())}>
             <BsFillBasket2Fill className="icon" />
             <h1>
               <b>Featured</b> Packages
             </h1>
           </div>
-          <div className="right">
+          {/* <div className="right">
             <span>SOSYAL MEDYA FİLTRELEYİNn:</span>
             <div className="item active">
               <BsInstagram className="icon" />
@@ -38,140 +46,27 @@ const PopularServicePackages = () => {
             <div className="item">
               <BsSpotify className="icon" />
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="center">
-          <div className="featuredCard">
-            <ul>
-              <li className="title">
-                INSTAGRAM
-                <br /> PACKAGES
-              </li>
-              <li className="first">
-                <BsPersonAdd className="first" />
-                <p>1.000 Dusmeyen Follower</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>%100 Dusme Garantili</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>Anlik Baslar</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>Sifreniz Istenmez</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>3D Secure Payment</p>
-              </li>
-            </ul>
-            <div className="price">
-              <p>19.90$</p>
-              <button>Add to Cart</button>
-            </div>
-          </div>
-
-          <div className="featuredCard">
-            <ul>
-              <li className="title">
-                INSTAGRAM
-                <br /> PACKAGES
-              </li>
-              <li className="first">
-                <BsPersonAdd className="first" />
-                <p>1.000 Dusmeyen Follower</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>%100 Dusme Garantili</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>Anlik Baslar</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>Sifreniz Istenmez</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>3D Secure Payment</p>
-              </li>
-            </ul>
-            <div className="price">
-              <p>19.90$</p>
-              <button>Add to Cart</button>
-            </div>
-          </div>
-
-          <div className="featuredCard">
-            <ul>
-              <li className="title">
-                INSTAGRAM
-                <br /> PACKAGES
-              </li>
-              <li className="first">
-                <BsPersonAdd className="first" />
-                <p>1.000 Dusmeyen Follower</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>%100 Dusme Garantili</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>Anlik Baslar</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>Sifreniz Istenmez</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>3D Secure Payment</p>
-              </li>
-            </ul>
-            <div className="price">
-              <p>19.90$</p>
-              <button>Add to Cart</button>
-            </div>
-          </div>
-
-          <div className="featuredCard">
-            <ul>
-              <li className="title">
-                INSTAGRAM
-                <br /> PACKAGES
-              </li>
-              <li className="first">
-                <BsPersonAdd className="first" />
-                <p>1.000 Dusmeyen Follower</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>%100 Dusme Garantili</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>Anlik Baslar</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>Sifreniz Istenmez</p>
-              </li>
-              <li>
-                <BsCheck2 className="icon" />
-                <p>3D Secure Payment</p>
-              </li>
-            </ul>
-            <div className="price">
-              <p>19.90$</p>
-              <button>Add to Cart</button>
-            </div>
-          </div>
+          {data?.map((discountCard) => (
+            <DiscountCard
+              key={discountCard.id}
+              discountCard={discountCard}
+              handleAddCart={() =>
+                dispathc(
+                  addToCart({
+                    id: discountCard.id,
+                    title: discountCard.attributes.title,
+                    desc_1: discountCard.attributes.desc_1,
+                    price: discountCard.attributes.price,
+                    icon: discountCard.attributes.icon,
+                    quantity: 1,
+                  })
+                )
+              }
+            />
+          ))}
         </div>
         <div className="bottom">
           <div className="bottomWrapper">

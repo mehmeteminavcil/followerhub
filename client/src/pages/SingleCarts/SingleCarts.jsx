@@ -1,21 +1,19 @@
 import "./SingleCarts.scss";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import Card from "../../Card/Card";
+import Card from "../../components/Card/Card";
 
 import { addToCart } from "../../redux/cartReducer";
 import { useDispatch } from "react-redux";
 
 const SingleCarts = () => {
   const param = useParams();
-  console.log(param);
 
   const dispatch = useDispatch();
 
   const { data, loading, error } = useFetch(
     `/products?filters[sub_categories][title][$eq]=${param.id}`
   );
-  console.log(data);
 
   return (
     <div className="singleCarts">
@@ -28,7 +26,10 @@ const SingleCarts = () => {
               addToCart({
                 id: card.id,
                 title: card.attributes.title,
+                desc_1: card.attributes.desc_1,
                 price: card.attributes.price,
+                icon: card.attributes.icon,
+                quantity: 1,
               })
             )
           }
