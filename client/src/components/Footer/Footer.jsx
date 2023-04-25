@@ -1,8 +1,15 @@
 import "./Footer.scss";
+import { BsWhatsapp } from "react-icons/bs";
 
 const Footer = () => {
   return (
     <div className="footer">
+      <div className="contact">
+        <div className="contactItem">
+          {" "}
+          <BsWhatsapp className="whatsapp" />
+        </div>
+      </div>
       <div className="top">
         <div className="item">
           <h1>Categories</h1>

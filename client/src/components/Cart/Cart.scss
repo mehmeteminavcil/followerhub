@@ -1,7 +1,8 @@
 .cartPopup {
-  margin-top: 10px;
+  min-width: 350px;
   position: absolute;
-  right: 40px;
+  top: 50px;
+  right: -10px;
   background: #ffffffb8;
   border-radius: 8px;
   backdrop-filter: blur(10px);
