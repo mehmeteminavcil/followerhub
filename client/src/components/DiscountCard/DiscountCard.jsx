@@ -1,17 +1,16 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "./DiscountCard.scss";
 
 import { BsPersonAdd, BsCheck2, BsCartPlus } from "react-icons/bs";
 import { GoEyeClosed } from "react-icons/go";
 import { FaCartPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { addToCart, resetCart } from "../../redux/cartReducer";
+import { addToCart } from "../../redux/cartReducer";
 const DiscountCard = ({ discountCard }) => {
   const [showForm, setShowForm] = useState(false);
   const [profilePicture, setProfilePicture] = useState("/img/user.png");
   const [username, setUserName] = useState(null);
   const [buttonType, setButtonType] = useState(false);
-  console.log(username);
 
   const dispatch = useDispatch();
 
@@ -31,15 +30,18 @@ const DiscountCard = ({ discountCard }) => {
     }
     console.log("username is empty");
   };
-  console.log(username);
+
+  const cardStyle = useMemo(() => {
+    return {
+      background: discountCard.attributes.color,
+    };
+  }, [discountCard.attributes.color]);
+
   return (
     <div className="discountCardContainer">
       <div className="discountCard">
         <ul>
-          <li
-            className="title"
-            style={{ background: discountCard.attributes.color }}
-          >
+          <li className="title" style={cardStyle}>
             <h3>
               {discountCard.attributes.title}
               <br /> PACKAGES
@@ -85,7 +87,7 @@ const DiscountCard = ({ discountCard }) => {
               setButtonType(false);
               setShowForm(!showForm);
             }}
-            style={{ background: discountCard.attributes.color }}
+            style={cardStyle}
           >
             Buy Now
           </button>
@@ -112,10 +114,7 @@ const DiscountCard = ({ discountCard }) => {
                   Add to cart
                 </button>
               ) : (
-                <button
-                  type="button"
-                  style={{ background: discountCard.attributes.color }}
-                >
+                <button type="button" style={cardStyle}>
                   Buy Now
                 </button>
               )}

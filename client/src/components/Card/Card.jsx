@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import "./Card.scss";
 import { BsPersonAdd, BsCheck2 } from "react-icons/bs";
 import { GoEyeClosed } from "react-icons/go";
@@ -14,21 +14,45 @@ const Card = ({ card }) => {
 
   const dispatch = useDispatch();
 
-  console.log(username);
+  const handleAddToCart = useCallback(() => {
+    dispatch(
+      addToCart({
+        id: card.id,
+        title: card.attributes.title,
+        desc_1: card.attributes.desc_1,
+        price: card.attributes.price,
+        icon: card.attributes.icon,
+        quantity: 1,
+        username: username,
+      })
+    );
+  }, [
+    card.id,
+    card.attributes.title,
+    card.attributes.desc_1,
+    card.attributes.price,
+    card.attributes.icon,
+    username,
+    dispatch,
+  ]);
+
+  const cardStyle = useMemo(() => {
+    return {
+      background: card.attributes.color,
+    };
+  }, [card.attributes.color]);
+
   return (
     <div className="cardContainer">
       <div className="featuredCard">
         <ul>
-          <li className="title" style={{ background: card.attributes.color }}>
+          <li className="title" style={cardStyle}>
             <h3>
               {card?.attributes.title}
               <br /> PACKAGES
             </h3>
 
-            <i
-              className={card.attributes.icon + " logo"}
-              style={{ background: card.attributes.color }}
-            ></i>
+            <i className={`${card.attributes.icon} logo`} style={cardStyle}></i>
           </li>
           <li className="first">
             <BsPersonAdd className="first" />
@@ -67,7 +91,7 @@ const Card = ({ card }) => {
               setButtonType(false);
               setShowForm(!showForm);
             }}
-            style={{ background: card.attributes.color }}
+            style={cardStyle}
           >
             Buy Now
           </button>
@@ -89,29 +113,11 @@ const Card = ({ card }) => {
                 onChange={(e) => setUserName(e.target.value)}
               />
               {buttonType ? (
-                <button
-                  type="button"
-                  onClick={() =>
-                    dispatch(
-                      addToCart({
-                        id: card.id,
-                        title: card.attributes.title,
-                        desc_1: card.attributes.desc_1,
-                        price: card.attributes.price,
-                        icon: card.attributes.icon,
-                        quantity: 1,
-                        username: username,
-                      })
-                    )
-                  }
-                >
+                <button type="button" onClick={handleAddToCart}>
                   Add to cart
                 </button>
               ) : (
-                <button
-                  type="button"
-                  style={{ background: card.attributes.color }}
-                >
+                <button type="button" style={cardStyle}>
                   Buy Now
                 </button>
               )}

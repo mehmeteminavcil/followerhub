@@ -2,22 +2,21 @@ import "./Navbar.scss";
 
 import { Link, useParams } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Cart from "../Cart/Cart";
 import { useSelector } from "react-redux";
-import SocialMediaServices from "../SocialMediaServices/SocialMediaServices";
 import useFetch from "../../hooks/useFetch";
 
 function Navbar() {
   const products = useSelector((state) => state.cart.products);
 
   const { data, loading, error } = useFetch("/categories");
-  console.log(data);
 
   const [navOpen, setNavOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const cartCount = useMemo(() => products.length, [products]);
 
   return (
     <nav className="navbar">
@@ -41,7 +40,7 @@ function Navbar() {
           <li className="cartContainer">
             <div className="cart" onClick={() => setOpen(!open)}>
               <ShoppingCartOutlinedIcon className="cartIcon" />
-              <span>{products.length}</span>
+              <span>{cartCount}</span>
             </div>
             {open && <Cart />}
           </li>

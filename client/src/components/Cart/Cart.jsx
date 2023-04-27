@@ -5,22 +5,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeItem, resetCart } from "../../redux/cartReducer";
 import { makeRequest } from "../../makeRequest";
 import { loadStripe } from "@stripe/stripe-js";
+import { useMemo } from "react";
 
 const Cart = () => {
   const products = useSelector((state) => state.cart.products);
 
   const dispatch = useDispatch();
 
-  const totalPrice = () => {
+  const totalPrice = useMemo(() => {
     let total = 0;
     products.forEach((item) => (total += item.quantity * item.price));
     return total.toFixed(2);
-  };
+  }, [products]);
 
   const stripePromise = loadStripe(
     "pk_test_51Mz7ggHlxNfkUvkRIMWgEeqsGwXXAt1iDwfv8CtEqDYYA4I5sduZnJqDxf8FpcpLgqVRwh0nti0rvdBIqLiH7EZ700Qtl4XFxu"
   );
-  console.log(products);
 
   const handlePayment = async () => {
     try {
@@ -66,7 +66,7 @@ const Cart = () => {
 
       <div className="total">
         <span>SUBTOTAL</span>
-        <span>${totalPrice()}</span>
+        <span>${totalPrice}</span>
       </div>
       <button onClick={handlePayment}>
         <CiWallet className="wallet" />

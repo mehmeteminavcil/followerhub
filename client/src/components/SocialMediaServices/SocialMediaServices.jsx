@@ -1,12 +1,8 @@
 import "./SocialMediaServices.scss";
 import { Link } from "react-router-dom";
-import { BsInstagram, BsSpotify, BsTiktok, BsTwitter } from "react-icons/bs";
-import { useSelector } from "react-redux";
 import useFetch from "../../hooks/useFetch";
 const SocialMediaServices = () => {
-  const products = useSelector((state) => state.cart.products);
-
-  const { data, loading, error } = useFetch("/categories");
+  const { data } = useFetch("/categories");
 
   return (
     <div className="SocialMediaServices">
@@ -28,7 +24,6 @@ const SocialMediaServices = () => {
               >
                 <i className={category.attributes.icon + " icon"}></i>
                 <h5>{category.attributes.title}</h5>
-                {/* <p>Services</p> */}
               </Link>
             ))}
           </div>
