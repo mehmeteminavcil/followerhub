@@ -1,29 +1,15 @@
-import { useDispatch } from "react-redux";
 import useFetch from "../../hooks/useFetch";
 import DiscountCard from "../DiscountCard/DiscountCard";
 import "./PopularServicePackages.scss";
-import {
-  BsFillBasket2Fill,
-  BsInstagram,
-  BsSpotify,
-  BsTiktok,
-  BsTwitter,
-  BsYoutube,
-  BsPersonAdd,
-  BsCheck2,
-} from "react-icons/bs";
-import { addToCart, resetCart } from "../../redux/cartReducer";
+import { BsFillBasket2Fill } from "react-icons/bs";
 
 const PopularServicePackages = () => {
-  const { data, loading, error } = useFetch(
-    `/products?filters[type][$eq]=trending`
-  );
-  const dispathc = useDispatch();
+  const { data } = useFetch(`/products?filters[type][$eq]=trending`);
   return (
     <div className="PopularServicePackages">
       <div className="wrapper">
         <div className="top">
-          <div className="left" onClick={() => dispathc(resetCart())}>
+          <div className="left">
             <BsFillBasket2Fill className="icon" />
             <h1>
               <b>Featured</b> Packages

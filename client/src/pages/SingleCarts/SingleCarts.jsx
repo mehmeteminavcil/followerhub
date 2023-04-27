@@ -6,7 +6,7 @@ import Card from "../../components/Card/Card";
 const SingleCarts = () => {
   const param = useParams();
 
-  const { data, loading, error } = useFetch(
+  const { data } = useFetch(
     `/products?filters[sub_categories][title][$eq]=${param.id}`
   );
 

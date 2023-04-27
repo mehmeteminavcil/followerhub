@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import "./DiscountCard.scss";
 
-import { BsPersonAdd, BsCheck2, BsCartPlus } from "react-icons/bs";
+import { BsPersonAdd, BsCheck2 } from "react-icons/bs";
 import { GoEyeClosed } from "react-icons/go";
 import { FaCartPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
