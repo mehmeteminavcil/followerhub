@@ -3,12 +3,16 @@ import "./Card.scss";
 import { BsPersonAdd, BsCheck2 } from "react-icons/bs";
 import { GoEyeClosed } from "react-icons/go";
 import { FaCartPlus } from "react-icons/fa";
+import { addToCart } from "../../redux/cartReducer";
+import { useDispatch } from "react-redux";
 
-const Card = ({ card, handleAddCart }) => {
+const Card = ({ card }) => {
   const [showForm, setShowForm] = useState(false);
   const [profilePicture, setProfilePicture] = useState("/img/user.png");
   const [username, setUserName] = useState("");
   const [buttonType, setButtonType] = useState(false);
+
+  const dispatch = useDispatch();
 
   console.log(username);
   return (
@@ -85,7 +89,22 @@ const Card = ({ card, handleAddCart }) => {
                 onChange={(e) => setUserName(e.target.value)}
               />
               {buttonType ? (
-                <button type="button" onClick={handleAddCart}>
+                <button
+                  type="button"
+                  onClick={() =>
+                    dispatch(
+                      addToCart({
+                        id: card.id,
+                        title: card.attributes.title,
+                        desc_1: card.attributes.desc_1,
+                        price: card.attributes.price,
+                        icon: card.attributes.icon,
+                        quantity: 1,
+                        username: username,
+                      })
+                    )
+                  }
+                >
                   Add to cart
                 </button>
               ) : (

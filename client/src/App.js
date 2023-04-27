@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import SingleLinks from "./pages/SingleLinks/SingleLinks";
 import SingleCarts from "./pages/SingleCarts/SingleCarts";
+import Payment from "./pages/Payment/Payment";
 
 const Layout = () => {
   return (
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { path: "/:id/:id", element: <SingleCarts /> },
       { path: "/products/:id", element: <Product /> },
       { path: "/product/:id", element: <Products /> },
+      { path: "/payment", element: <Payment /> },
     ],
   },
 ]);

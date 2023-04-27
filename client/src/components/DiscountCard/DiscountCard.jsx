@@ -1,20 +1,36 @@
 import { useState } from "react";
 import "./DiscountCard.scss";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import { BsPersonAdd, BsCheck2, BsCartPlus } from "react-icons/bs";
 import { GoEyeClosed } from "react-icons/go";
 import { FaCartPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addToCart, resetCart } from "../../redux/cartReducer";
-const DiscountCard = ({ discountCard, handleAddCart }) => {
+const DiscountCard = ({ discountCard }) => {
   const [showForm, setShowForm] = useState(false);
   const [profilePicture, setProfilePicture] = useState("/img/user.png");
-  const [username, setUserName] = useState("");
+  const [username, setUserName] = useState(null);
   const [buttonType, setButtonType] = useState(false);
+  console.log(username);
 
   const dispatch = useDispatch();
 
+  const handleAddCart = () => {
+    if (username) {
+      dispatch(
+        addToCart({
+          id: discountCard.id,
+          title: discountCard.attributes.title,
+          desc_1: discountCard.attributes.desc_1,
+          price: discountCard.attributes.price,
+          icon: discountCard.attributes.icon,
+          quantity: 1,
+          username: username,
+        })
+      );
+    }
+    console.log("username is empty");
+  };
   console.log(username);
   return (
     <div className="discountCardContainer">
@@ -90,6 +106,7 @@ const DiscountCard = ({ discountCard, handleAddCart }) => {
                 placeholder="write your username.."
                 onChange={(e) => setUserName(e.target.value)}
               />
+
               {buttonType ? (
                 <button type="button" onClick={handleAddCart}>
                   Add to cart

@@ -50,22 +50,7 @@ const PopularServicePackages = () => {
         </div>
         <div className="center">
           {data?.map((discountCard) => (
-            <DiscountCard
-              key={discountCard.id}
-              discountCard={discountCard}
-              handleAddCart={() =>
-                dispathc(
-                  addToCart({
-                    id: discountCard.id,
-                    title: discountCard.attributes.title,
-                    desc_1: discountCard.attributes.desc_1,
-                    price: discountCard.attributes.price,
-                    icon: discountCard.attributes.icon,
-                    quantity: 1,
-                  })
-                )
-              }
-            />
+            <DiscountCard key={discountCard.id} discountCard={discountCard} />
           ))}
         </div>
         <div className="bottom">
