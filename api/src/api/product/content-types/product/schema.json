@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "desc_1": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "sub_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sub-category.sub-category",
+      "inversedBy": "products"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "normal",
+        "featured",
+        "trending"
+      ],
+      "default": "normal"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "desc_2": {
+      "type": "string",
+      "default": "%100 Dusme Garantili"
+    },
+    "desc_3": {
+      "type": "string"
+    },
+    "desc_4": {
+      "type": "string"
+    },
+    "desc_5": {
+      "type": "string"
+    },
+    "p_id": {
+      "type": "uid"
+    }
+  }
+}
